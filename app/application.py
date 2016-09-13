@@ -3,10 +3,7 @@ from tornado import web, template
 from jinja2 import Environment, FileSystemLoader
 
 from app.settings import *
-from app.handlers import example
-
-# 为了让tornado支持jade模板
-from handlers import index
+from app.handlers import index
 
 env = Environment(
     loader=FileSystemLoader(FOLDER_TEMPLATE),
