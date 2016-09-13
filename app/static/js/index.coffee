@@ -10,13 +10,20 @@ setRandomCity = =>
         series:
             data: data
 
+toggleRandom = =>
+    if @interval
+        clearInterval @interval
+        @interval = null
+    else
+        @interval = setInterval setRandomCity, 500
+
 
 
 main = =>
     @mapChart = echarts.init $("#chart")[0]
     mapChart.setOption
         title:
-            text: '我们去哪玩儿'
+            text: '我们去哪玩儿(点击地图开始选择)'
             textStyle:
                 color: '#fff'
         backgroundColor: '#404a59'
@@ -65,13 +72,15 @@ main = =>
             data: []
         ]
 
+
     $.getJSON("/static/china.json", (resp) =>
         @provinces = resp
         @cities = {}
         _.map provinces, (p, cs) =>
             _.merge @cities, p
-        setRandomCity()
-        setInterval setRandomCity, 1000
+
+        @mapChart.on 'click', toggleRandom
+
 
     )
 $ main

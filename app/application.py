@@ -28,6 +28,7 @@ class Jinja2TemplateLoader(template.Loader):
 # 所有的url映射定义在这一处
 routes = [
     ('/', index.IndexPage),
+    ('/chart', index.ChartPage),
     ]
 
 

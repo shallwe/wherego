@@ -11,3 +11,6 @@ class IndexPage(BaseRequestHandler):
     def get(self):
         self.render("index.jade")
 
+class ChartPage(BaseRequestHandler):
+    def get(self, *args, **kwargs):
+        self.render('chart2.jade')
