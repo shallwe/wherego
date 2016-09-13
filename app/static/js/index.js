@@ -86,7 +86,7 @@
           }
         ]
       });
-      return $.get("/static/china.json", function(resp) {
+      return $.getJSON("/static/china.json", function(resp) {
         _this.provinces = resp;
         _this.cities = {};
         _.map(provinces, function(p, cs) {

@@ -65,7 +65,7 @@ main = =>
             data: []
         ]
 
-    $.get("/static/china.json", (resp) =>
+    $.getJSON("/static/china.json", (resp) =>
         @provinces = resp
         @cities = {}
         _.map provinces, (p, cs) =>
