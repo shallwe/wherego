@@ -3,7 +3,16 @@
   height: 800px;
   margin: auto;
 }
+#main #switcher {
+  margin: 10px auto 20px auto;
+  width: 600px;
+}
+#main #switcher button#go {
+  margin-left: 100px;
+}
 #main #chart {
   width: 1024px;
   height: 768px;
+  padding: 0;
+  margin: auto;
 }
