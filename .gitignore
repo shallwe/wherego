@@ -87,3 +87,14 @@ ENV/
 
 # Rope project settings
 .ropeproject
+.DS_Store
+.idea/
+app/.DS_Store
+app/static/.DS_Store
+app/static/css/.DS_Store
+app/static/js/.DS_Store
+app/static/js/libs/.DS_Store
+tools/.DS_Store
+tools/china.json
+tools/data/
+tools/old_city.json
