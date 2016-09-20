@@ -10,7 +10,7 @@ setCities = (name, cities) =>
     _.map cities, (value, city) ->
         data.push
             name: city
-            value: value.concat city
+            value: value.pos.concat value.pr
     nameMap =
         old_city: '历史文化名城'
         unusual_city: '冷门旅游城市'
@@ -20,17 +20,14 @@ setCities = (name, cities) =>
         series:
             type: 'scatter'
             coordinateSystem: 'geo'
-            label:
-                normal:
-                    show: false
-                    formatter: '{b}'
-                    position: 'top'
-                emphasis:
-                    show: false
+#            label:
+#                normal:
+#                    show: false
+#                    formatter: '{a}'
+#                    position: 'top'
+#                emphasis:
+#                    show: false
             symbolSize: 4
-            label:
-                normal:
-                    show: false
             itemStyle:
                 normal:
                     color: 'green'

@@ -20,7 +20,7 @@
       _.map(cities, function(value, city) {
         return data.push({
           name: city,
-          value: value.concat(city)
+          value: value.pos.concat(value.pr)
         });
       });
       nameMap = {
@@ -34,22 +34,7 @@
         series: {
           type: 'scatter',
           coordinateSystem: 'geo',
-          label: {
-            normal: {
-              show: false,
-              formatter: '{b}',
-              position: 'top'
-            },
-            emphasis: {
-              show: false
-            }
-          },
           symbolSize: 4,
-          label: {
-            normal: {
-              show: false
-            }
-          },
           itemStyle: {
             normal: {
               color: 'green'
