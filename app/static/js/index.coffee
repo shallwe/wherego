@@ -21,8 +21,10 @@ setCities = (name, cities) =>
         unusual_city: '冷门旅游城市'
         china_city: '中国城市'
 
+    @mapChart.setOption
+        title:
+            text: nameMap[name]
     option = @mapChart.getOption()
-    option.title.text = nameMap[name]
     option.series = [{
             name: 'cities'
             type: 'scatter'
@@ -34,6 +36,7 @@ setCities = (name, cities) =>
                         if o.data.value[2] == 'in' then 'green' else 'rgb(100, 120, 100)'
             data: data
         }]
+
     @mapChart.setOption(option, true)
 
 reDrawCities = =>
@@ -106,6 +109,8 @@ setChosenCity = (name, val) =>
 
     @mapChart.setOption
         series: series
+        title:
+            text: "选定在 #{name}"
     $("#go").removeClass('loading')
 
 clearSelectedProvinces = =>
@@ -174,25 +179,14 @@ beginRandomSequence = =>
         setChosenCity, city, @constraintCities[city]
     ), addedTime
 
-#    if @pickingInterval
-#        clearInterval @pickingInterval
-#
-#        @pickingInterval = null
-#        $("#go .icon").removeClass 'pause'
-#        $("#go .icon").addClass 'play'
-#        $(".city-selector").removeClass('disabled')
-#
-#    else
-#        @pickingInterval = setInterval setRandomCity, 1000
-#        $("#go .icon").removeClass 'start'
-#        $("#go .icon").addClass 'pause'
-#        $(".city-selector").addClass('disabled')
 
 main = =>
     @mapChart = echarts.init $("#chart")[0]
     mapChart.setOption
         title:
             text: '我们去哪儿玩'
+            top: '15'
+            left: 'center'
             textStyle:
                 color: '#555'
         backgroundColor: '#bbbbbb'

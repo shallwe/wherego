@@ -34,8 +34,12 @@
         unusual_city: '冷门旅游城市',
         china_city: '中国城市'
       };
+      _this.mapChart.setOption({
+        title: {
+          text: nameMap[name]
+        }
+      });
       option = _this.mapChart.getOption();
-      option.title.text = nameMap[name];
       option.series = [
         {
           name: 'cities',
@@ -163,7 +167,10 @@
         data: data
       });
       _this.mapChart.setOption({
-        series: series
+        series: series,
+        title: {
+          text: "选定在 " + name
+        }
       });
       return $("#go").removeClass('loading');
     };
@@ -264,6 +271,8 @@
       mapChart.setOption({
         title: {
           text: '我们去哪儿玩',
+          top: '15',
+          left: 'center',
           textStyle: {
             color: '#555'
           }
