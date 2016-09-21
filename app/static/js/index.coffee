@@ -20,10 +20,10 @@ setCities = (name, cities) =>
         old_city: '历史文化名城'
         unusual_city: '冷门旅游城市'
         china_city: '中国城市'
-    @mapChart.setOption
-        title:
-            text: nameMap[name]
-        series:
+
+    option = @mapChart.getOption()
+    option.title.text = nameMap[name]
+    option.series = [{
             name: 'cities'
             type: 'scatter'
             coordinateSystem: 'geo'
@@ -33,6 +33,8 @@ setCities = (name, cities) =>
                     color: (o) ->
                         if o.data.value[2] == 'in' then 'green' else 'rgb(100, 120, 100)'
             data: data
+        }]
+    @mapChart.setOption(option, true)
 
 reDrawCities = =>
     series = @mapChart.getOption().series
@@ -48,7 +50,6 @@ reDrawCities = =>
                 value: value.pos.concat v
         _.filter(series, name: 'cities')[0].data = data
         @mapChart.setOption series: series
-
 
 
 passedCity = (name, val) =>
@@ -92,12 +93,11 @@ setChosenCity = (name, val) =>
         name: '选中城市'
         type: 'scatter'
         coordinateSystem: 'geo'
-        symbolSize: 10
+        symbolSize: 13
         label:
             normal:
                 show: true
-                formatter: (obj) ->
-                    "#{obj.name} in #{window.allCities[obj.name].pr}<br>"
+                formatter: '{b}'
                 position: 'top'
         itemStyle:
             normal:
@@ -106,7 +106,7 @@ setChosenCity = (name, val) =>
 
     @mapChart.setOption
         series: series
-
+    $("#go").removeClass('loading')
 
 clearSelectedProvinces = =>
     for province in @selectedProvinces
@@ -173,8 +173,6 @@ beginRandomSequence = =>
     setTimeout _.partial(
         setChosenCity, city, @constraintCities[city]
     ), addedTime
-
-    $("#go").removeClass("loading")
 
 #    if @pickingInterval
 #        clearInterval @pickingInterval

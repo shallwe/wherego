@@ -15,7 +15,7 @@
 
   setCities = (function(_this) {
     return function(name, cities) {
-      var data, nameMap;
+      var data, nameMap, option;
       data = [];
       _.map(cities, function(value, city) {
         var v;
@@ -34,11 +34,10 @@
         unusual_city: '冷门旅游城市',
         china_city: '中国城市'
       };
-      return _this.mapChart.setOption({
-        title: {
-          text: nameMap[name]
-        },
-        series: {
+      option = _this.mapChart.getOption();
+      option.title.text = nameMap[name];
+      option.series = [
+        {
           name: 'cities',
           type: 'scatter',
           coordinateSystem: 'geo',
@@ -56,7 +55,8 @@
           },
           data: data
         }
-      });
+      ];
+      return _this.mapChart.setOption(option, true);
     };
   })(this);
 
@@ -147,13 +147,11 @@
         name: '选中城市',
         type: 'scatter',
         coordinateSystem: 'geo',
-        symbolSize: 10,
+        symbolSize: 13,
         label: {
           normal: {
             show: true,
-            formatter: function(obj) {
-              return "" + obj.name + " in " + window.allCities[obj.name].pr + "<br>";
-            },
+            formatter: '{b}',
             position: 'top'
           }
         },
@@ -164,9 +162,10 @@
         },
         data: data
       });
-      return _this.mapChart.setOption({
+      _this.mapChart.setOption({
         series: series
       });
+      return $("#go").removeClass('loading');
     };
   })(this);
 
@@ -255,8 +254,7 @@
       }
       addedTime += timeGap;
       city = _.last(randomSequence);
-      setTimeout(_.partial(setChosenCity, city, _this.constraintCities[city]), addedTime);
-      return $("#go").removeClass("loading");
+      return setTimeout(_.partial(setChosenCity, city, _this.constraintCities[city]), addedTime);
     };
   })(this);
 
