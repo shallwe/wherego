@@ -169,7 +169,7 @@
       _this.mapChart.setOption({
         series: series,
         title: {
-          text: "选定在 " + name
+          text: "所以,我们去 『" + name + "』 ?"
         }
       });
       return $("#go").removeClass('loading');

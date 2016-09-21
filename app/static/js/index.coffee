@@ -110,7 +110,7 @@ setChosenCity = (name, val) =>
     @mapChart.setOption
         series: series
         title:
-            text: "选定在 #{name}"
+            text: "所以,我们去 『#{name}』 ?"
     $("#go").removeClass('loading')
 
 clearSelectedProvinces = =>
