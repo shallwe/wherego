@@ -161,7 +161,7 @@
         },
         itemStyle: {
           normal: {
-            color: 'blue'
+            color: 'green'
           }
         },
         data: data
@@ -252,6 +252,11 @@
       timeGap = 1000;
       addedTime = 0;
       $("#go").addClass("loading");
+      _this.mapChart.setOption({
+        title: {
+          text: '小公鸡点到谁。。'
+        }
+      });
       _ref = randomSequence.slice(0, -1);
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         city = _ref[_i];

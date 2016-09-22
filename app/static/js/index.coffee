@@ -104,7 +104,7 @@ setChosenCity = (name, val) =>
                 position: 'top'
         itemStyle:
             normal:
-                color: 'blue'
+                color: 'green'
         data: data
 
     @mapChart.setOption
@@ -165,6 +165,11 @@ beginRandomSequence = =>
     addedTime = 0
 
     $("#go").addClass("loading")
+    @mapChart.setOption(
+        title:
+            text:
+                '小公鸡点到谁。。'
+    )
 
     for city in randomSequence[0...-1]
         addedTime += timeGap
