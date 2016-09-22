@@ -1,0 +1,14 @@
+[Unit]
+Description=where shallwe go
+After=network.target
+
+[Service]
+WorkingDirectory=/usr/local/wherego
+ExecStart=/usr/local/bin/python3 server.py --port=81
+KillMode=process
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+
