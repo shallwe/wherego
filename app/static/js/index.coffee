@@ -128,6 +128,7 @@ loadCityList = (city_name) ->
     clearSelectedProvinces()
     fetch("/static/json/#{city_name}.json").then (resp) ->
         resp.json().then (cities) ->
+            alert 'on then'
             window.allCities = cities
             reloadConstraintCities()
 

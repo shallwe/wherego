@@ -197,6 +197,7 @@
     clearSelectedProvinces();
     return fetch("/static/json/" + city_name + ".json").then(function(resp) {
       return resp.json().then(function(cities) {
+        alert('on then');
         window.allCities = cities;
         reloadConstraintCities();
         setCities(city_name, window.allCities);
