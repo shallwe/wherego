@@ -228,6 +228,7 @@ main = =>
     $('#china_city').click _.partial(loadCityList, 'china_city')
     $('#old_city').click _.partial(loadCityList, 'old_city')
     $('#unusual_city').click _.partial(loadCityList, 'unusual_city')
+    $('#airport_city').click _.partial(loadCityList, 'airport_city')
 
     $("#go").click beginRandomSequence
 $ main
