@@ -133,6 +133,8 @@ loadCityList = (city_name) ->
         setCities city_name, window.allCities
         $("#go").removeClass('disabled')
         window.mapChart.hideLoading()
+    $('.city-selector .button').removeClass('active')
+    $("##{city_name}").addClass('active')
 
 reloadConstraintCities = =>
     @constraintCities = {}
@@ -223,9 +225,9 @@ main = =>
 
     @mapChart.on 'geoselectchanged', onAreaChange
 
-    $('#china-city').click _.partial(loadCityList, 'china_city')
-    $('#old-city').click _.partial(loadCityList, 'old_city')
-    $('#unusual').click _.partial(loadCityList, 'unusual_city')
+    $('#china_city').click _.partial(loadCityList, 'china_city')
+    $('#old_city').click _.partial(loadCityList, 'old_city')
+    $('#unusual_city').click _.partial(loadCityList, 'unusual_city')
 
     $("#go").click beginRandomSequence
 $ main

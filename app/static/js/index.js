@@ -195,13 +195,15 @@
   loadCityList = function(city_name) {
     window.mapChart.showLoading();
     clearSelectedProvinces();
-    return $.getJSON("/static/json/" + city_name + ".json", function(cities) {
+    $.getJSON("/static/json/" + city_name + ".json", function(cities) {
       window.allCities = cities;
       reloadConstraintCities();
       setCities(city_name, window.allCities);
       $("#go").removeClass('disabled');
       return window.mapChart.hideLoading();
     });
+    $('.city-selector .button').removeClass('active');
+    return $("#" + city_name).addClass('active');
   };
 
   reloadConstraintCities = (function(_this) {
@@ -311,9 +313,9 @@
         series: []
       });
       _this.mapChart.on('geoselectchanged', onAreaChange);
-      $('#china-city').click(_.partial(loadCityList, 'china_city'));
-      $('#old-city').click(_.partial(loadCityList, 'old_city'));
-      $('#unusual').click(_.partial(loadCityList, 'unusual_city'));
+      $('#china_city').click(_.partial(loadCityList, 'china_city'));
+      $('#old_city').click(_.partial(loadCityList, 'old_city'));
+      $('#unusual_city').click(_.partial(loadCityList, 'unusual_city'));
       return $("#go").click(beginRandomSequence);
     };
   })(this);
