@@ -195,15 +195,12 @@
   loadCityList = function(city_name) {
     window.mapChart.showLoading();
     clearSelectedProvinces();
-    return fetch("/static/json/" + city_name + ".json").then(function(resp) {
-      return resp.json().then(function(cities) {
-        alert('on then');
-        window.allCities = cities;
-        reloadConstraintCities();
-        setCities(city_name, window.allCities);
-        $("#go").removeClass('disabled');
-        return window.mapChart.hideLoading();
-      });
+    return $.getJSON("/static/json/" + city_name + ".json", function(cities) {
+      window.allCities = cities;
+      reloadConstraintCities();
+      setCities(city_name, window.allCities);
+      $("#go").removeClass('disabled');
+      return window.mapChart.hideLoading();
     });
   };
 

@@ -126,15 +126,13 @@ clearSelectedProvinces = =>
 loadCityList = (city_name) ->
     window.mapChart.showLoading()
     clearSelectedProvinces()
-    fetch("/static/json/#{city_name}.json").then (resp) ->
-        resp.json().then (cities) ->
-            alert 'on then'
-            window.allCities = cities
-            reloadConstraintCities()
+    $.getJSON "/static/json/#{city_name}.json", (cities) ->
+        window.allCities = cities
+        reloadConstraintCities()
 
-            setCities city_name, window.allCities
-            $("#go").removeClass('disabled')
-            window.mapChart.hideLoading()
+        setCities city_name, window.allCities
+        $("#go").removeClass('disabled')
+        window.mapChart.hideLoading()
 
 reloadConstraintCities = =>
     @constraintCities = {}
