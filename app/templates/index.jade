@@ -14,10 +14,15 @@ block body
         .container
             #switcher
                 .ui.basic.buttons.city-selector
-                    .ui.button#china_city 中国城市
+                    .ui.button#china_city 所有城市
                     .ui.button#old_city 古城
                     .ui.button#unusual_city 冷门
-                    .ui.button#airport_city 机场城市
+                    .ui.labeled.button#airport_city
+                        i.plane.icon
+                        |机场城市
+                    .ui.labeled.button#railway_city
+                        i.train.icon
+                        |高铁城市
                 //button.ui.active.button#high-rail 高铁沿线
 
                 button.ui.disabled.primary.icon.button#go

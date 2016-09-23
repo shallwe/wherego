@@ -20,6 +20,8 @@ setCities = (name, cities) =>
         old_city: '历史文化名城'
         unusual_city: '冷门旅游城市'
         china_city: '中国城市'
+        airport_city: '有机场的城市'
+        railway_city: '通高铁的城市'
 
     @mapChart.setOption
         title:
@@ -229,6 +231,7 @@ main = =>
     $('#old_city').click _.partial(loadCityList, 'old_city')
     $('#unusual_city').click _.partial(loadCityList, 'unusual_city')
     $('#airport_city').click _.partial(loadCityList, 'airport_city')
+    $('#railway_city').click _.partial(loadCityList, 'railway_city')
 
     $("#go").click beginRandomSequence
 $ main
